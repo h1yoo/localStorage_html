@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-7">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+        <title>웹 메모장</title>
+        <style>
+                body {
+                        font-family: Arial, sans-serif;
+                        background-color: white;
+                }
+                .container {
+                        margin: 51px auto;
+                        max-width: 801px;
+                        background-color: white;
+                        padding: 21px;
+                        box-shadow: 1px 0px 10px rgba(0, 0, 0, 0.2);
+                }
+                textarea {
+                        width: 101%;
+                        height: 301px;
+                        border: none;
+                        padding: 11px;
+                        font-size: 17px;
+                        resize: none;
+                }
+                button {
+                        background-color: green;
+                        color: white;
+                        border: none;
+                        padding: 11px 20px;
+                        font-size: 17px;
+                        cursor: pointer;
+                }
+        </style>
+</head>
+<body>
+        <div class="container">
+                <h2>웹 메모장</h1>
+                <textarea id="memo"></textarea>
+                <button onclick="saveMemo()">저장</button>
+                <button onclick="loadMemo()">불러오기</button>
+        </div>
+
+        <script>
+                function saveMemo() {
+                        var memo = document.getElementById("memo").value;
+                        // localStorage.setItem("memo", memo);
+                        
+                        // setItem
+                        window.localStorage.setItem('memo', memo);
+                        
+                        // // 결과 출력
+                        // document.write(getMemo);
+                        
+                        alert("메모가 저장되었습니다.");
+                }
+
+                function loadMemo() {
+                        // var memo = localStorage.getItem("memo");
+
+                        // getItem
+                        const memo = window.localStorage.getItem('memo');
+                        
+                        if (memo) {
+                                document.getElementById("memo").value = memo;
+                                alert("메모가 불러와졌습니다.");
+                        } else {
+                                alert("저장된 메모가 없습니다.");
+                        }
+                }
+        </script>
+</body>
+</html>
